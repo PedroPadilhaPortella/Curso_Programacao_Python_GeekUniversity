@@ -1,6 +1,5 @@
 dia = int(input("Dia da semana: "))
 weekday = 0
-x = 1
 if (dia == 1):
     weekday = "Domingo"
 elif (dia == 2):
