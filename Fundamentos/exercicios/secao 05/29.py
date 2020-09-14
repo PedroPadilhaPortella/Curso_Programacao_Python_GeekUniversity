@@ -2,6 +2,7 @@ import random
 from time import sleep
 
 nota = 0
+
 def questao(questao):
     global nota
     print("\n\nQuestão {}".format(questao))
