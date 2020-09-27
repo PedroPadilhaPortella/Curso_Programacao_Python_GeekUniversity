@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import pymysql.cursors
 
 
@@ -11,6 +12,8 @@ conexao = pymysql.connect(
 )
 
 autentico = False
+usuarioSupremo = False
+
 
 def LogarCadastrar():
     usuarioExitente = 0
@@ -143,6 +146,123 @@ def listarPedidos():
             except:
                 print("Erro ao dar pedido como entregue")
 
+
+def gerarEstatistica():
+    produtos = 0
+    vendido = 0
+
+    try:
+        with conexao.cursor() as cursor:
+            cursor.execute('select * from produtos')
+            produtos = cursor.fetchall()
+    except:
+        print('erro ao fazer consulta no banco de dados')
+
+    try:
+        with conexao.cursor() as cursor:
+            cursor.execute('select * from estatisticaVendido')
+            vendido = cursor.fetchall()
+    except:
+        print('erro ao fazer a consulta no banco de dados')
+
+    estado = int(input("1 pesquisar por nome\n2 pesquisar por grupo\n0 sair\n:_"))
+    if(estado == 1):
+        organizar = int(input("1 organizar por custo\n2 organizar por quantidade\n:_"))
+
+        if(organizar == 1):
+            valores = []
+            valores.clear()
+            nomeProdutos = []
+            nomeProdutos.clear()
+            for i in produtos:
+                nomeProdutos.append(i['nome'])
+            
+            for i in range(0, len(nomeProdutos)):
+                somaValor = -1
+                for venda in vendido:
+                    if (venda['nome'] == nomeProdutos[i]):
+                        somaValor += venda['preco']
+                if somaValor == -1:
+                    valores.append(0)
+                elif somaValor > 0:
+                    valores.append(somaValor + 1)
+            
+            plt.plot(nomeProdutos, valores)
+            plt.ylabel('Vendas em reais')
+            plt.xlabel('Produtos')
+            plt.show()
+
+        elif(organizar == 2):
+            grupos = []
+            grupos.clear()
+            for i in produtos:
+                grupos.append(i['nome'])
+            grupos = sorted(set(grupos))
+            
+            qntFinal = []
+            qntFinal.clear()
+
+            for quant in range(0, len(grupos)):
+                quantUnit = 0
+                for i in vendido:
+                    if(grupos[quant] == i['nome']):
+                        quantUnit += 1
+                qntFinal.append(quantUnit)
+
+            plt.plot(grupos, qntFinal)
+            plt.ylabel('quantidade unitaria vendida')
+            plt.xlabel('produtos')
+            plt.show()
+    
+    elif(estado == 2):
+        organizar = int(input("1 organizar por custo\n2 organizar por quantidade\n:_"))
+
+        if(organizar == 1):
+            valores = []
+            valores.clear()
+            nomeProdutos = []
+            nomeProdutos.clear()
+            for i in produtos:
+                nomeProdutos.append(i['grupo'])
+            
+            for i in range(0, len(nomeProdutos)):
+                somaValor = -1
+                for venda in vendido:
+                    if (venda['grupo'] == nomeProdutos[i]):
+                        somaValor += venda['preco']
+                if somaValor == -1:
+                    valores.append(0)
+                elif somaValor > 0:
+                    valores.append(somaValor + 1)
+            
+            plt.plot(nomeProdutos, valores)
+            plt.xlabel('Produtos')
+            plt.ylabel('Vendas em reais')
+            plt.show()
+
+        elif(organizar == 2):
+            grupos = []
+            grupos.clear()
+            for i in produtos:
+                grupos.append(i['grupo'])
+            grupos = sorted(set(grupos))
+            
+            qntFinal = []
+            qntFinal.clear()
+
+            for quant in range(0, len(grupos)):
+                quantUnit = 0
+                for i in vendido:
+                    if(grupos[quant] == i['grupo']):
+                        quantUnit += 1
+                qntFinal.append(quantUnit)
+
+            plt.plot(grupos, qntFinal)
+            plt.ylabel('quantidade unitaria vendida')
+            plt.xlabel('produtos')
+            plt.show()
+
+
 while(not autentico):
     decisao = int(input("Digite 1 para Logar e 2 para cadastrar: "))
 
@@ -161,8 +281,13 @@ if(autentico == True):
     if(usuarioSupremo == True):
         decisaoUsuario = 1
         while(decisaoUsuario != 0):
-            decisaoUsuario = int(input("\n1 Cadastrar Produtos:\n2 listar Produtos\n3 listar Pedidos\n0 Sair\n_"))
-
+            decisaoUsuario = int(input('''
+1 Cadastrar Produtos
+2 listar Produtos
+3 listar Pedidos
+4 visualizar estatisticas
+0 Sair
+'''))
             if(decisaoUsuario == 1):
                 cadastrarProdutos()
             elif(decisaoUsuario == 2):
@@ -172,4 +297,5 @@ if(autentico == True):
                     excluirProdutos()
             elif(decisaoUsuario == 3):
                 listarPedidos()
-
+            elif(decisaoUsuario == 4):
+                gerarEstatistica()
