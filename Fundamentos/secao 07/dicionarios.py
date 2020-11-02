@@ -58,3 +58,30 @@ print(outro)
 outro = {}.fromkeys(range(1, 5), 'int')
 print(outro)
 
+# mapas
+
+receita = {'jan': 110, 'fev':120, 'mar': 500, 'abr': 90, 'mai': 210, 'jun': 140, 'jul': 400, 'ago': 430, 'set': 200, 'out': 80, 'nov': 120, 'dez': 700}
+
+for key in receita:
+    print(f'{key}: {receita[key]}', end=', ')
+print()
+
+for key in receita.keys():
+    print(key, end="  ")
+
+print("\n",receita.keys())
+print(receita.values())
+
+for value in receita.values():
+    print(value, end="  ")
+print()
+
+# Desempacotamento de dicionários
+for chave, valor in receita.items():
+    print(chave, valor, end="  ")
+
+#podemos usar funções para encontrar Sum(), Max(), Min(), Len(), mas apenas para valores numéricos ou int
+print(sum(receita.values()))
+print(max(receita.values()))
+print(min(receita.values()))
+print(len(receita))
