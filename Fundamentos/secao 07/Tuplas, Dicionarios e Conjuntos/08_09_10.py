@@ -1,6 +1,5 @@
 from random import randint
 
-
 matriz = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 soma = [0, 0, 0]
 
