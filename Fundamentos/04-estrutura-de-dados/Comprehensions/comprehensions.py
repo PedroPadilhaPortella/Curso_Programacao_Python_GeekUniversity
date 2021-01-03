@@ -1,4 +1,4 @@
-# List Comprehentions
+# Comprehentions
 # [ expressao for item in list if condicional ]
 
 dobro = []
