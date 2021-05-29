@@ -1,3 +1,7 @@
+'''
+    Hipótese - Rede Multicamadas
+'''
+
 import numpy as np
 import matplotlib.pyplot as plt
 
