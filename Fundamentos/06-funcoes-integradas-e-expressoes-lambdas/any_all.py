@@ -1,8 +1,8 @@
 '''
 Any
-    Função Booleana que retorna true se algum dos elementos do iterável são verdadeiros para uma condição.
+    any() -> Função Booleana que retorna true se algum dos elementos do iterável são verdadeiros para uma condição.
 All
-    Função Booleana que retorna true se todos os elementos do iterável são verdadeiros para uma condição,
+    all() -> Função Booleana que retorna true se todos os elementos do iterável são verdadeiros para uma condição,
     ou se o iterável é vazio.
 
 '''

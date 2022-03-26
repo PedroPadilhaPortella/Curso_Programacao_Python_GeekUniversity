@@ -1,6 +1,6 @@
 '''
 Filter
-    A função filter serve para filtrar dados de uma coleção.
+    filter() -> A função filter serve para filtrar dados de uma coleção.
     Ela é uma função que recebe dois paramentros, uma função booleana e um iterável,
     que pode ser uma lista, tupla, etc... e retorna um <filter object>, que é
     Filter Object: f(a), f(b), f(c), f(d) ... sendo f() a função passada por parâmetro.

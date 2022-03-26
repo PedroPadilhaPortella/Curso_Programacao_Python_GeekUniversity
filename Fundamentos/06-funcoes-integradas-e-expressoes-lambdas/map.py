@@ -1,6 +1,6 @@
 '''
 Map
-    Com o map, fazemos mapeamento de valores para funções.
+    map() -> Com o map, fazemos mapeamento de valores para funções.
     Ela é uma função que recebe dois paramentros, uma função e um iterável,
     que pode ser uma lista, tupla, etc... e retorna um <map object>, que é
     Map Object: f(a), f(b), f(c), f(d) ... sendo f() a função passada por parâmetro.

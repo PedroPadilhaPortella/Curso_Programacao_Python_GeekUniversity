@@ -1,6 +1,6 @@
 '''
 Reduce
-    Com o reduce, fazemos a redução dos valores de um iterável para um valor único.
+    functools.reduce() -> Com o reduce, fazemos a redução dos valores de um iterável para um valor único.
     Ela é uma função que recebe dois paramentros, uma função com dois parametros e um iterável.
 
     Ela executa a função sobre os dois primeiros elementos do iterável e guarda o resultado,
