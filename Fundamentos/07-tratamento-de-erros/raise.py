@@ -20,7 +20,9 @@ def colorir(texto, cor):
         raise ValueError(f'A cor precisa ser uma das seguintes: {cores}')
     print(cores[cor] + f"O texto '{texto}' será impresso em {cor}" + Fore.RESET)
 
-
-texto = input('Digite uma texto: ')
-cor = input('Digite uma cor: ')
-colorir(texto, cor)
+try:
+    texto = input('Digite uma texto: ')
+    cor = input('Digite uma cor: ')
+    colorir(texto, cor)
+except ValueError as err:
+    print(err)
