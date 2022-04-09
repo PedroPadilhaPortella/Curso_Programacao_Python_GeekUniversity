@@ -1,5 +1,5 @@
 '''
-    Polimorfismo
+    Polimorfismo é a capacidade de um método ou função ser sobrescrita em classes diferentes.
 '''
 
 class Animal:
