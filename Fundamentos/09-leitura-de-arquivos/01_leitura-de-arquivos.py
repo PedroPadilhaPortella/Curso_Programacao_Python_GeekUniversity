@@ -10,6 +10,8 @@ Leitura de Arquivos
 
     read() -> função que retorna o conteúdo do arquivo.
     readlines() -> função que retorna uma lista com as linhas do arquivo.
+
+    close() -> função que fecha o arquivo.
 '''
 
 file = open('file.txt', mode='r', encoding='cp1252')
@@ -20,3 +22,5 @@ print("Qauntidade de linhas: ", len(file.read().split('\n')))
 
 file = open('file.txt')
 print(file.read())
+
+file.close()

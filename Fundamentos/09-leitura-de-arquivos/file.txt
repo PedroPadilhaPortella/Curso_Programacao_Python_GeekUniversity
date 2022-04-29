@@ -1,2 +1,2 @@
-Hello World Python
-Welcome to the Dart Side
+Ola Mundo Python
+Venha para o lado Dart da Forçao 
