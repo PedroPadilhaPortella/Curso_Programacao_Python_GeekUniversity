@@ -1,0 +1,29 @@
+'''
+Teste de Memória com Generators
+
+Sequencia de Fibonacci
+1, 1, 2, 3, 5, 8, 13, 21...
+'''
+
+def fibonacci(max):
+    nums = []
+    a, b = 0, 1
+    while len(nums) < max:
+        nums.append(b)
+        a, b = b, a + b
+    return nums
+
+
+def fibonacci_gen(max):
+    a, b, contador = 0, 1, 0
+    while contador < max:
+        a, b = b, a + b
+        yield a
+        contador += 1
+
+
+# Teste
+# print(fibonacci(100000))
+
+for n in fibonacci_gen(100000):
+    print(n)
